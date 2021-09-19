@@ -8,4 +8,8 @@ Termux:
       python3 termux.py
 
 Linux:
-
+ 
+      sudo apt-get install python3 alsa-utils figlet espeak -y
+      cd ip-track 
+      pip3 install -r requirements.txt
+      python3 linux.py
