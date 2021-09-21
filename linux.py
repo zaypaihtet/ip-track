@@ -1,13 +1,17 @@
+RED = '\033[91m' #RED
+OK = '\033[92m' #GREEN
+RESTART = '\033[0m' #RESET COLOR
+YELLOW = '\033[93m' #YELLOW
 from urllib.request import urlopen as open
 import json
 import pyttsx3
 import re 
 import webbrowser
 from pyfiglet import Figlet
-
-
+engine = pyttsx3.init()
+engine.say("Welcome Baby")
 print(Figlet().renderText('IP-Tracker'))
-print("                                       by Red_Z")
+print(RED + "                                       by Red_Z" + YELLOW )
 engine = pyttsx3.init()
 
 engine.say("I'm RED_Z")
@@ -21,7 +25,7 @@ engine.runAndWait()
 
 def goto2():
     global ip
-    ip = input("Enter ip address  : ")
+    ip = input(YELLOW + "Enter ip address  : " + RESTART)
     exit() if ip.lower() == 'exit' else check(ip)
 
 
@@ -41,18 +45,18 @@ regex = '''^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(
        
 def check(Ip):
     if(Ip.startswith('192')):
-        print("I think its a private ip address")
-        speak('I think its a private ip address,Master')
+        print( RED + "I think its a private ip address " + RESTART)
+        speak('I think its a private ip address,Bro')
         goto2()
 
     elif(re.search(regex, Ip)): 
-        print("Valid Ip address found")
-        speak("locating Master")
+        print(OK + "Valid Ip address found" + RESTART)
+        speak("locating,Bro")
         goto1()
      
     else:
-        print("Invalid ip address")
-        speak("Wrong ip address,Master")
+        print(RED + "Invalid ip address" + RESTART)
+        speak("Wrong ip address,Bro")
         goto2()
 
 def goto1():
@@ -74,21 +78,21 @@ def goto1():
     webbrowser.open(maps + location)
     
 
-    print(" IP: " + values['query'])
-    print(" Status: " + values['status'])
-    print(" city: " + values['city'])
-    print(" ISP: " + values['isp'])
-    print(" latitude: " + lat)
-    print(" longitude: " + lon)
-    print(" country: " + values['country'])
-    print(" region: " + values['regionName'])
-    print(" city: " + values['city'])
-    print(" zip: " + values['zip'])
-    print(" AS: " + values['as'])
+    print(RED + " IP: " + values['query'] + RESTART)
+    print(YELLOW + " Status: " + values['status'] + RESTART)
+    print(RED + " city: " + values['city'] + RESTART)
+    print(YELLOW + " ISP: " + values['isp'] + RESTART)
+    print(RED + " latitude: " + lat)
+    print(YELLOW + " longitude: " + lon)
+    print(RED + " country: " + values['country'] + RESTART)
+    print(YELLOW + " region: " + values['regionName'] + RESTART)
+    print(RED + " city: " + values['city'] + RESTART)
+    print(YELLOW + " zip: " + values['zip'] + RESTART)
+    print(RED + " AS: " + values['as'] + RESTART)
     if status == success:
         speak("sucessfully located")
     else:
-        speak("cannot find the location,Master")    
+        speak("cannot find the location,Bro")    
     
     goto2()           
         
