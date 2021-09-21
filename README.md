@@ -10,6 +10,7 @@ Termux:
 Linux:
  
       sudo apt-get install python3 alsa-utils figlet espeak -y
+      git clone https://github.com/zaypaihtet/ip-track
       cd ip-track 
 
       pip3 install -r requirements.txt
